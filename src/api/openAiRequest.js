@@ -37,6 +37,10 @@ export default async function askQuestion(input) {
     return [...messages];
   } catch (error) {
     console.error(error);
-    return "Request error.";
+    messages.splice(messages.length - 1, 0, {
+      role: "assistant",
+      content: "Connection error !",
+    })
+    return [...messages];
   }
 }
