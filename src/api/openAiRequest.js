@@ -13,33 +13,19 @@ export default async function askQuestion(input) {
   }
 
   messages.push({ role: "user", content: question });
- // console.log(messages);
+
   try {
-    const response = await axios.post(`http://localhost:5000/api/chat`, {
+    // const response = await axios.post(`http://localhost:5000/api/chat`, {
+    //   messages: messages,
+    // });
+    const response = await axios.post(`/api/chat`, {
       messages: messages,
     });
     console.log("SENT:", messages);
-    // const response = await axios.post(
-    //     "https://api.openai.com/v1/chat/completions",
-    //   {
-    //     model: "ft:gpt-3.5-turbo-0125:personal:pharmacy:BIBVYS1J",
-    //     messages: messages,
-    //     temperature: 0.2,
-    //   },
-    //   {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Authorization: `Bearer ${apiKey}`,
-    //     },
-    //   }
-    // );
+ 
 
     const answer = response.data.choices[0].message.content;
     console.log("Received :", messages);
-    // messages.push({
-    //   role: "assistant",
-    //   content: answer,
-    // });
 
     console.log(messages);
 
