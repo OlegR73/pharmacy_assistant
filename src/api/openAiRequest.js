@@ -41,6 +41,6 @@ export default async function askQuestion(input) {
       role: "assistant",
       content: "Connection error !",
     })
-    return [...messages];
+    return [..messages];
   }
 }
