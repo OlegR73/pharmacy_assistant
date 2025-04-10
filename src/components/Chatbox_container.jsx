@@ -1,6 +1,8 @@
 import { useRef, useEffect, useState } from "react";
 import askQuestion from "../api/openAiRequest.js";
 
+const baseURL = process.env.REACT_APP_API_URL;
+
 export default function Chatbox_container() {
   const input = useRef();
   const submit = useRef();
@@ -35,6 +37,14 @@ export default function Chatbox_container() {
         setLoading(false);
       });
   }, [value]);
+
+  useEffect(() => {
+    //fetch("http://localhost:5000/api/messages")
+    fetch(`/api/messages`)
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch((err) => console.error("Fetch error:", err) )
+  }, [])
 
   return (
     <div className="container">

@@ -3,7 +3,7 @@ const cors = require('cors');
 const OpenAI = require('openai');
 const path = require('path');
 const express = require('express');
-
+const messagesRoute = require('./api/messages');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -16,6 +16,7 @@ const openai = new OpenAI({
     organization: 'org-w9p8rhkAvl9JcwRikM9wPO0g'
 });
   
+app.use("/api/messages", messagesRoute);
 
 app.post('/api/chat',async (req, res) => {
   const {messages} = req.body;
@@ -44,6 +45,7 @@ app.use(express.static(path.join(__dirname, '../build')));
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, '../build/index.html'));
 });
+
 
 
 app.listen(PORT, () => {
