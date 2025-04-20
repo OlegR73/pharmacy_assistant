@@ -24,9 +24,9 @@ app.post('/api/chat',async (req, res) => {
   try{
     const chatCompletion = await openai.chat.completions.create(
         {
-            model: "ft:gpt-3.5-turbo-0125:personal:pharmacy:BJM3Qa2a",
+            model: "ft:gpt-3.5-turbo-0125:personal:pharmacy:BOPqEB8C",
             messages: messages,
-            temperature: 0.2,
+            temperature: 0.1,
         },
         
     );
