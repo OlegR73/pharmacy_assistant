@@ -26,7 +26,7 @@ app.post('/api/chat',async (req, res) => {
         {
             model: "ft:gpt-3.5-turbo-0125:personal:pharmacy:BOPqEB8C",
             messages: messages,
-            temperature: 0.1,
+            temperature: 0.3,
         },
         
     );
